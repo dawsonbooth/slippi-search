@@ -59,6 +59,3 @@ typings/
 
 # PHPStorm
 .idea/
-
-# Dist
-dist/

@@ -29,14 +29,20 @@ export function getSortedFrames(game: SlippiGame) {
   return _.orderBy(frames, "frame");
 }
 
-function isValidGame(game: SlippiGame, criteria: GameCriteriaType): boolean {
+export function isValidGame(
+  game: SlippiGame,
+  criteria: GameCriteriaType
+): boolean {
   const gameSettings = game.getSettings()!;
   if (criteria.stageIds && !criteria.stageIds.has(gameSettings.stageId))
     return false;
   return true;
 }
 
-function isValidFrame(frame: FrameEntryType, criteria: FrameCriteriaType) {
+export function isValidFrame(
+  frame: FrameEntryType,
+  criteria: FrameCriteriaType
+) {
   return true;
 }
 
@@ -64,18 +70,20 @@ export function searchFrames(
   }
 }
 
-export function getGames(
+export function getMatchingGames(
   games: Iterable<SlippiGame>,
   criteria: GameCriteriaType
 ) {
-  const found = new Set();
-  searchGames(games, criteria, (game: SlippiGame) => found.add(game));
+  const found = new Array<SlippiGame>();
+  searchGames(games, criteria, (game: SlippiGame) => found.push(game));
   return found;
 }
 
-export function getFrames(game: SlippiGame, criteria: FrameCriteriaType) {
-  const frames = getSortedFrames(game);
-  const found = new Set();
-  searchFrames(frames, criteria, (frame: FrameEntryType) => found.add(frame));
+export function getMatchingFrames(
+  frames: Array<FrameEntryType>,
+  criteria: FrameCriteriaType
+) {
+  const found = new Array<FrameEntryType>();
+  searchFrames(frames, criteria, (frame: FrameEntryType) => found.push(frame));
   return found;
 }

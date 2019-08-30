@@ -91,7 +91,7 @@ module.exports = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  preset: "ts-jest/presets/js-with-ts",
+  preset: "ts-jest/presets/js-with-babel",
 
   // Run tests from one or more projects
   // projects: null,

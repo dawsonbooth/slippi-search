@@ -4,8 +4,6 @@
   "description": "A collection of useful functions for searching through Slippi Replays",
   "license": "MIT",
   "repository": "dawsonbooth/slippi-search",
-  "main": "index.js",
-  "types": "types/index.d.ts",
   "author": {
     "name": "Dawson Booth",
     "email": "npmjs@dawsonbooth.com",
@@ -15,32 +13,40 @@
     "node": ">=6"
   },
   "files": [
-    "./dist",
-    "index.js"
+    "dist"
   ],
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf dist",
     "test": "jest",
-    "build": "tsc"
+    "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
+    "clean": "rimraf dist",
+    "build": "rollup -c"
+  },
+  "jest": {
+    "testRegex": "/test/.*",
+    "testEnvironment": "node"
   },
   "dependencies": {
     "lodash": "^4.17.15",
     "slp-parser-js": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
-    "babel-jest": "^24.9.0",
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.9.0",
     "prettier": "1.18.2",
     "rimraf": "^3.0.0",
+    "rollup": "^1.21.4",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-typescript2": "^0.24.2",
     "ts-jest": "^24.0.2",
     "typescript": "^3.6.2"
   }

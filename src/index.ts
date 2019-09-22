@@ -8,14 +8,12 @@ export function gamesFromDir(startPath: string, callback: Function) {
   if (!fs.existsSync(startPath))
     throw new Error(`Path '${startPath}' does not exist`);
 
-  const files = fs.readdirSync(startPath);
-
-  for (let i = 0; i < files.length; i += 1) {
-    const fullPath = path.join(startPath, files[i]);
+  fs.readdirSync(startPath).forEach(function(f) {
+    const fullPath = path.join(startPath, f);
     const game = new SlippiGame(fullPath);
 
     if (filter.test(fullPath)) callback(game);
-  }
+  });
 }
 
 export function getGamesFromDir(startPath: string) {
@@ -34,7 +32,7 @@ export function isValidGame(
   criteria: GameCriteriaType
 ): boolean {
   const gameSettings = game.getSettings()!;
-  if (criteria.stageIds && !criteria.stageIds.has(gameSettings.stageId))
+  if (criteria.stageId && !criteria.stageId.has(gameSettings.stageId))
     return false;
   return true;
 }

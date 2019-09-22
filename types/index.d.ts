@@ -1,5 +1,8 @@
 type GameCriteriaType = {
-  stageIds: Set<number>;
+  stageId: Set<GameSettingsType["stageId"]>;
+  isTeams: Set<GameSettingsType["isTeams"]>;
+  players: GameSettingsType["players"]; // FIXME
+  isPAL: Set<GameSettingsType["isPAL"]>;
 };
 
 type FrameCriteriaType = {};

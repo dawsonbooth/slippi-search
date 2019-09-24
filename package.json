@@ -1,6 +1,6 @@
 {
   "name": "slippi-search",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A collection of useful functions for searching through Slippi Replays",
   "license": "MIT",
   "repository": "dawsonbooth/slippi-search",
@@ -19,9 +19,10 @@
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest",
     "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
+    "test": "jest",
     "clean": "rimraf dist",
+    "prebuild": "yarn run clean",
     "build": "rollup -c"
   },
   "jest": {

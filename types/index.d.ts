@@ -1,12 +1,29 @@
 type GameCriteriaType = {
-  stageId: Set<GameSettingsType["stageId"]>;
-  isTeams: Set<GameSettingsType["isTeams"]>;
-  players: GameSettingsType["players"]; // FIXME
-  isPAL: Set<GameSettingsType["isPAL"]>;
+  stageId?: Set<GameSettingsType["stageId"]>;
+  players?: PlayerCriteriaType[]; // TODO: How would looping to check work?
+  isTeams?: Set<GameSettingsType["isTeams"]>;
+  isPAL?: Set<GameSettingsType["isPAL"]>;
 };
 
 type FrameCriteriaType = {};
 
+type PlayerCriteriaType = {
+  playerIndex: PlayerType["playerIndex"];
+  port: Set<PlayerType["port"]>;
+  characterId: Set<PlayerType["characterId"]>;
+  characterColor: Set<PlayerType["characterColor"]>;
+  startStocks: NumberRange<PlayerType["startStocks"]>;
+  finalStocks: NumberRange<PlayerType["startStocks"]>;
+  type: Set<PlayerType["type"]>;
+  teamId: Set<PlayerType["teamId"]>;
+  controllerFix: Set<PlayerType["controllerFix"]>;
+  nametag: Set<PlayerType["nametag"]>;
+}
+
+type NumberRange<E> = {
+  start: number;
+  end: number;
+}
 
 // slp-parser-js typedefs
 

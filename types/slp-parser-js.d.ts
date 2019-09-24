@@ -1,5 +1,4 @@
-// TEMPORARY UNTIL PULL REQUEST IS ACCEPTED:
-// https://github.com/project-slippi/slp-parser-js/pull/9
+// TEMPORARY UNTIL NPM PACKAGE IS UPGRADED TO INCLUDE RECENT TYPESCRIPT ADDITIONS
 
 declare module 'slp-parser-js' {
     // animations

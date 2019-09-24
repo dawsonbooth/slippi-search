@@ -5,7 +5,7 @@ export function isValidGame(
   criteria: GameCriteriaType
 ): boolean {
   const gameSettings = game.getSettings()!;
-  for (var key in criteria) {
+  for (const key in criteria) {
     if (key === "players") continue; // skip player check for now
     if (!criteria[key].has(gameSettings[key])) return false;
   }

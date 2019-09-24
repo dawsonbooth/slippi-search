@@ -29,7 +29,7 @@ test("check isValidGame - stageId", () => {
   };
   const games = utils.getGamesFromDir(__dirname);
   const real = [false, true, true, true, false, true, true, false, false, true];
-  for (var i = 0; i < games.length; i++) {
+  for (let i = 0; i < games.length; i++) {
     expect(utils.isValidGame(games[i], criteria)).toBe(real[i]);
   }
 });
@@ -50,7 +50,7 @@ test("check isValidGame - isTeams", () => {
     isTeams: new Set([true])
   };
   const games = utils.getGamesFromDir(__dirname);
-  for (var i = 0; i < games.length; i++) {
+  for (let i = 0; i < games.length; i++) {
     expect(utils.isValidGame(games[i], criteria)).toBe(
       games[i].getSettings().isTeams
     );
@@ -62,7 +62,7 @@ test("check isValidGame - isPAL", () => {
     isPAL: new Set([true])
   };
   const games = utils.getGamesFromDir(__dirname);
-  for (var i = 0; i < games.length; i++) {
+  for (let i = 0; i < games.length; i++) {
     expect(utils.isValidGame(games[i], criteria)).toBe(
       games[i].getSettings().isPAL || false
     );

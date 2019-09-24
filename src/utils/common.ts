@@ -15,6 +15,6 @@ export class NumberRange {
   }
 
   has(arg: number) {
-    return (this.start <= arg && arg <= this.end);
+    return this.start <= arg && arg <= this.end;
   }
 }

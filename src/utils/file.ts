@@ -1,13 +1,13 @@
 import path from "path";
 import fs from "fs";
-import SlippiGame from 'slp-parser-js';
+import SlippiGame from "slp-parser-js";
 
 export function withGamesFromDir(startPath: string, callback: Function) {
   const filter = /\.slp$/;
   if (!fs.existsSync(startPath))
     throw new Error(`Path '${startPath}' does not exist`);
 
-  for (var f of fs.readdirSync(startPath)) {
+  for (const f of fs.readdirSync(startPath)) {
     const fullPath = path.join(startPath, f);
     const game = new SlippiGame(fullPath);
 

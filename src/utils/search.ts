@@ -1,4 +1,4 @@
-import SlippiGame from "slp-parser-js";
+import SlippiGame, { FrameEntryType } from "slp-parser-js";
 
 export function isValidGame(
   game: SlippiGame,

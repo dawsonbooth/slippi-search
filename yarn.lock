@@ -1963,6 +1963,13 @@ iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.4:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
+iconv-lite@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.5.0.tgz#59cdde0a2a297cc2aeb0c6445a195ee89f127550"
+  integrity sha512-NnEhI9hIEKHOzJ4f697DMz9IQEXr/MMJ5w64vN2/4Ai+wRnvV7SBrL0KLoRlwaKVghOc7LQ5YkPLuX146b6Ydw==
+  dependencies:
+    safer-buffer ">= 2.1.2 < 3"
+
 idb-wrapper@^1.5.0:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/idb-wrapper/-/idb-wrapper-1.7.2.tgz#8251afd5e77fe95568b1c16152eb44b396767ea2"
@@ -4005,7 +4012,7 @@ sax@^1.2.4:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
 
-semver@^6.0.0, semver@^6.1.2, semver@^6.2.0:
+semver@^6.0.0, semver@^6.1.2, semver@^6.2.0, semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
@@ -4079,14 +4086,15 @@ slice-ansi@^2.1.0:
     astral-regex "^1.0.0"
     is-fullwidth-code-point "^2.0.0"
 
-slp-parser-js@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/slp-parser-js/-/slp-parser-js-3.0.0.tgz#dbf25c8f24af2cbc9e8c1f3e2c439cf1dd8b9423"
-  integrity sha512-BskEn9tpUTrg1G072oNGQZKqpFV+znYq3n9KvwX7J+ZU3tmbMmG/j3impqfhk2OuWsTjhIJPSKb/sWZqwmJ4RA==
+slp-parser-js@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/slp-parser-js/-/slp-parser-js-4.0.0.tgz#446a622536097f3f93db99983d970550cee4e82d"
+  integrity sha512-TMt8NzBpjV53mkCQHeOh6WEAakKuiqrq0gkQjMJVbBCiy0fmY4oA+Y+yHduS1vEuoZGD2REuTJuDRH70rKkxEg==
   dependencies:
     "@shelacek/ubjson" "^1.0.1"
-    iconv-lite "^0.4.24"
+    iconv-lite "^0.5.0"
     lodash "^4.17.11"
+    semver "^6.3.0"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

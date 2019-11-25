@@ -9,9 +9,8 @@ export function withGamesFromDir(startPath: string, callback: Function) {
 
   for (const f of fs.readdirSync(startPath)) {
     const fullPath = path.join(startPath, f);
-    const game = new SlippiGame(fullPath);
 
-    if (filter.test(fullPath)) callback(game);
+    if (filter.test(fullPath)) callback(new SlippiGame(fullPath));
   }
 }
 

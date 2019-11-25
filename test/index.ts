@@ -23,6 +23,14 @@ test("throw error on invalid path", () => {
   }
 });
 
+test("file asynchrony", () => {
+  let num = 0;
+  utils.withGamesFromDirAsync("slp", game => {
+    num += 1;
+  });
+  expect(num).toBe(0);
+});
+
 test("check isValidGame - stageId", () => {
   const criteria = {
     stageId: new Set([stages.STAGE_FD, stages.STAGE_DREAM_LAND])

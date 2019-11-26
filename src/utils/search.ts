@@ -1,64 +1,74 @@
 import SlippiGame, { FrameEntryType } from "slp-parser-js";
 
+export function isValidPlayer(
+    player: PlayerType,
+    criteria: PlayerCriteriaType
+) {
+    for (const key in criteria) {
+        if (!criteria[key].has(player[key])) return false;
+    }
+    return true;
+}
+
 export function isValidGame(
-  game: SlippiGame,
-  criteria: GameCriteriaType
+    game: SlippiGame,
+    criteria: GameCriteriaType
 ): boolean {
-  const gameSettings = game.getSettings()!;
-  for (const key in criteria) {
-    if (key === "players") continue; // skip player check for now
-    if (!criteria[key].has(gameSettings[key])) return false;
-  }
-  return true;
+    const gameSettings = game.getSettings()!;
+    for (const key in criteria) {
+        if (key === "players") if (!isValidPlayer) return false;
+        if (!criteria[key].has(gameSettings[key])) return false;
+    }
+    return true;
 }
 
 export function isValidFrame(
-  frame: FrameEntryType,
-  criteria: FrameCriteriaType
+    frame: FrameEntryType,
+    criteria: FrameCriteriaType
 ) {
-  return true;
+    return true;
 }
 
 export function withMatchingGames(
-  games: Iterable<SlippiGame>,
-  criteria: GameCriteriaType,
-  callback: Function
+    games: Iterable<SlippiGame>,
+    criteria: GameCriteriaType,
+    callback: Function
 ) {
-  for (const game of games) {
-    if (isValidGame(game, criteria)) {
-      callback(game);
+    for (const game of games) {
+        if (isValidGame(game, criteria)) {
+            callback(game);
+        }
     }
-  }
 }
 
 export function withMatchingFrames(
-  frames: Iterable<FrameEntryType>,
-  criteria: FrameCriteriaType,
-  callback: Function
+    frames: Iterable<FrameEntryType>,
+    criteria: FrameCriteriaType,
+    callback: Function
 ) {
-  for (const frame of frames) {
-    if (isValidFrame(frame, criteria)) {
-      callback(frame);
+    for (const frame of frames) {
+        if (isValidFrame(frame, criteria)) {
+            callback(frame);
+        }
     }
-  }
 }
 
 export function getMatchingGames(
-  games: Iterable<SlippiGame>,
-  criteria: GameCriteriaType
+    games: Iterable<SlippiGame>,
+    criteria: GameCriteriaType
 ) {
-  const found = new Array<SlippiGame>();
-  withMatchingGames(games, criteria, (game: SlippiGame) => found.push(game));
-  return found;
+    const found = new Array<SlippiGame>();
+    withMatchingGames(games, criteria, (game: SlippiGame) => found.push(game));
+    return found;
 }
 
 export function getMatchingFrames(
-  frames: Array<FrameEntryType>,
-  criteria: FrameCriteriaType
+    frames: Array<FrameEntryType>,
+    criteria: FrameCriteriaType
 ) {
-  const found = new Array<FrameEntryType>();
-  withMatchingFrames(frames, criteria, (frame: FrameEntryType) =>
-    found.push(frame)
-  );
-  return found;
+    const found = new Array<FrameEntryType>();
+    withMatchingFrames(frames, criteria, (frame: FrameEntryType) =>
+        found.push(frame)
+    );
+    return found;
 }

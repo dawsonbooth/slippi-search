@@ -60,4 +60,4 @@ withGamesFromDir("replays", game => {
 
 4. Change the "replays" path to some directory that holds some of your slp files.
 5. Browse to the directory from the command line and run the command: `npm install slippi-search`. This should create a `node_modules` directory in the folder.
-6. Run the command: `node script.js`. This will run the script above to search through and print data about the replay files in that directory.
+6. Run the command: `node script.js`. This will run the script above to search through and print data about the replay files that met the criteria in that directory.

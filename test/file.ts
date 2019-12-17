@@ -1,19 +1,23 @@
-import { utils } from "../src";
+import {
+    getGamesFromDir,
+    withGamesFromDir,
+    withGamesFromDirAsync
+} from "../src";
 
 test("[FUNCTION] getGamesFromDir", () => {
-    const games = utils.getGamesFromDir("slp");
+    const games = getGamesFromDir("slp");
     expect(games.length).toBe(10);
 });
 
 test("[FUNCTION] withGamesFromDir", () => {
-    utils.withGamesFromDir("slp", game => {
+    withGamesFromDir("slp", game => {
         expect(game.getSettings().stageId >= 0).toBe(true);
     });
 });
 
 test("[FUNCTION] withGamesFromDirAsync", () => {
     let num = 0;
-    utils.withGamesFromDirAsync("slp", game => {
+    withGamesFromDirAsync("slp", game => {
         expect(game.getSettings().stageId >= 0).toBe(true);
         num += 1;
     });
@@ -22,7 +26,7 @@ test("[FUNCTION] withGamesFromDirAsync", () => {
 
 test("[ERROR] Throw error on invalid path", () => {
     try {
-        utils.getGamesFromDir(null);
+        getGamesFromDir(null);
     } catch (err) {
         expect(err.message).toBe(`Path '${null}' does not exist`);
     }

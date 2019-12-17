@@ -1,10 +1,5 @@
-import { utils } from "../src";
-import SlippiGame, {
-    animations,
-    characters,
-    moves,
-    stages
-} from "slp-parser-js";
+import { withGamesFromDir, isValidGame, isValidPlayer } from "../src";
+import { stages } from "slp-parser-js";
 import _ from "lodash";
 import { NumberRange } from "../src/utils/common";
 
@@ -15,10 +10,10 @@ test("[FUNCTION] isValidGame", () => {
         isPAL: new Set([true])
     };
 
-    utils.withGamesFromDir("slp", game => {
+    withGamesFromDir("slp", game => {
         for (const key in criteria) {
             expect(
-                utils.isValidGame(game, {
+                isValidGame(game, {
                     [key]: criteria[key]
                 })
             ).toBe(criteria[key].has(game.getSettings()[key]));
@@ -40,10 +35,10 @@ test("[FUNCTION] isValidPlayer", () => {
         nametag: new Set(["test"])
     };
 
-    utils.withGamesFromDir("slp", game => {
+    withGamesFromDir("slp", game => {
         for (const key in criteria) {
             expect(
-                utils.isValidPlayer(game.getSettings().players[0], {
+                isValidPlayer(game.getSettings().players[0], {
                     [key]: criteria[key]
                 })
             ).toBe(criteria[key].has(game.getSettings().players[0][key]));

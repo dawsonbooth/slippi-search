@@ -22,7 +22,7 @@ This will also add Project Slippi's <a href="https://github.com/project-slippi/s
 2. Inside this new directory, create a file called `script.js`
 3. Fill the `script.js` file with the following contents:
 
-```
+```js
 const { withGamesFromDir, isValidGame } = require("slippi-search");
 const { stages } = require("slp-parser-js");
 

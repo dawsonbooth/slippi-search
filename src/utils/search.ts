@@ -1,4 +1,17 @@
-import SlippiGame, { FrameEntryType } from "slp-parser-js";
+import SlippiGame, {
+    FrameEntryType,
+    PreFrameUpdateType,
+    PostFrameUpdateType
+} from "slp-parser-js";
+import {
+    GameCriteriaType,
+    FrameCriteriaType,
+    PlayerType,
+    PlayerCriteriaType,
+    PlayerFrameCriteriaType,
+    PreFrameUpdateCriteriaType,
+    PostFrameUpdateCriteriaType
+} from "./common";
 
 export function isValidPlayer(
     player: PlayerType,
@@ -16,16 +29,58 @@ export function isValidGame(
 ): boolean {
     const gameSettings = game.getSettings()!;
     for (const key in criteria) {
-        if (key === "players") if (!isValidPlayer) return false;
+        if (key === "players" && !isValidPlayer) return false;
         if (!criteria[key].has(gameSettings[key])) return false;
     }
     return true;
+}
+
+export function isValidPreFrameUpdate(
+    pre: PreFrameUpdateType,
+    criteria: PreFrameUpdateCriteriaType
+) {
+    for (const key in criteria) {
+        if (!criteria[key].has(pre[key])) return false;
+    }
+    return true;
+}
+
+export function isValidPostFrameUpdate(
+    post: PostFrameUpdateType,
+    criteria: PostFrameUpdateCriteriaType
+) {
+    for (const key in criteria) {
+        if (!criteria[key].has(post[key])) return false;
+    }
+    return true;
+}
+
+export function isValidPlayerFrame(
+    playerFrame: {
+        pre: PreFrameUpdateType;
+        post: PostFrameUpdateType;
+    },
+    criteria: PlayerFrameCriteriaType
+) {
+    return (
+        isValidPreFrameUpdate(playerFrame.pre, criteria.pre) &&
+        isValidPostFrameUpdate(playerFrame.post, criteria.post)
+    );
 }
 
 export function isValidFrame(
     frame: FrameEntryType,
     criteria: FrameCriteriaType
 ) {
+    if (!criteria.frame.has(frame.frame)) return false;
+    if (criteria.players) {
+        for (let i = 0; i < 4; i++) {
+            if (!isValidPlayerFrame(frame.players[i], criteria.players[i]))
+                return false;
+            if (!isValidPlayerFrame(frame.followers[i], criteria.followers[i]))
+                return false;
+        }
+    }
     return true;
 }
 
@@ -57,18 +112,18 @@ export function getMatchingGames(
     games: Iterable<SlippiGame>,
     criteria: GameCriteriaType
 ) {
-    const found = new Array<SlippiGame>();
-    withMatchingGames(games, criteria, (game: SlippiGame) => found.push(game));
-    return found;
+    const valid = new Array<SlippiGame>();
+    withMatchingGames(games, criteria, (game: SlippiGame) => valid.push(game)); // FIXME: Async? Might have unexpected behavior
+    return valid;
 }
 
 export function getMatchingFrames(
     frames: Array<FrameEntryType>,
     criteria: FrameCriteriaType
 ) {
-    const found = new Array<FrameEntryType>();
+    const valid = new Array<FrameEntryType>();
     withMatchingFrames(frames, criteria, (frame: FrameEntryType) =>
-        found.push(frame)
+        valid.push(frame)
     );
-    return found;
+    return valid;
 }

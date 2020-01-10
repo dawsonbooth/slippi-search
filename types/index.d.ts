@@ -46,3 +46,36 @@ type GameStartType = {
     stageId: number | null;
     players: PlayerType[];
 };
+
+
+// import { GameStartType } from "slp-parser-js";
+
+// type GameCriteriaType = {
+//   slpVersion?: Set<GameStartType["slpVersion"]>;
+//   isTeams?: Set<GameStartType["isTeams"]>;
+//   isPAL?: Set<GameStartType["isPAL"]>;
+//   stageId?: Set<GameStartType["stageId"]>;
+//   players?: PlayerCriteriaType[];
+// };
+
+// type FrameCriteriaType = {};
+
+// type PlayerCriteriaType = {
+//   playerIndex: PlayerType["playerIndex"]; // FIXME
+//   port: Set<PlayerType["port"]>;
+//   characterId: Set<PlayerType["characterId"]>;
+//   characterColor: Set<PlayerType["characterColor"]>;
+//   startStocks: NumberRange<PlayerType["startStocks"]>;
+//   finalStocks: NumberRange<PlayerType["startStocks"]>;
+//   type: Set<PlayerType["type"]>;
+//   teamId: Set<PlayerType["teamId"]>;
+//   controllerFix: Set<PlayerType["controllerFix"]>;
+//   nametag: Set<PlayerType["nametag"]>;
+// };
+
+// type NumberRange<E> = {
+//   start: number;
+//   end: number;
+// };
+
+// type PlayerType = GameStartType["players"][0]

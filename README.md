@@ -2,6 +2,7 @@
 
 [![npm version](http://img.shields.io/npm/v/slippi-search.svg?style=flat)](https://npmjs.org/package/slippi-search "View this project on npm")
 [![downloads](http://img.shields.io/npm/dt/slippi-search.svg?style=flat)](https://npmjs.org/package/slippi-search)
+[![downloads](http://img.shields.io/npm/l/slippi-search.svg?style=flat)](https://github.com/dawsonbooth/slippi-search/blob/master/LICENSE)
 
 # Description
 
@@ -9,13 +10,13 @@ This Node.js package is a collection of useful functions for searching through a
 
 # Installation
 
-With <a href="https://nodejs.org/en/download/">Node.js</a> installed, simply run the following command to add the package to your project.
+With [Node.js](https://nodejs.org/en/download/) installed, simply run the following command to add the package to your project.
 
 ```bash
 npm install slippi-search
 ```
 
-This will also add Project Slippi's <a href="https://github.com/project-slippi/slp-parser-js">slp-parser-js</a> as a dependency.
+This will also add Project Slippi's [slp-parser-js](https://github.com/project-slippi/slp-parser-js) as a dependency.
 
 # Usage
 
@@ -63,3 +64,7 @@ withGamesFromDir("replays", game => {
 4. Change the "replays" path to some directory that holds some of your slp files.
 5. Browse to the directory from the command line and run the command: `npm install slippi-search`. This should create a `node_modules` directory in the folder.
 6. Run the command: `node script.js`. This will run the script above to search through and print data about the replay files that met the criteria in that directory.
+
+# License
+
+This software is released under the terms of [MIT license](LICENSE).

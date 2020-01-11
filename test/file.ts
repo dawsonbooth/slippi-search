@@ -4,20 +4,22 @@ import {
     withGamesFromDirAsync
 } from "../src";
 
+const REPLAY_DIR = "slp";
+
 test("[FUNCTION] getGamesFromDir", () => {
-    const games = getGamesFromDir("slp");
+    const games = getGamesFromDir(REPLAY_DIR);
     expect(games.length).toBe(10);
 });
 
 test("[FUNCTION] withGamesFromDir", () => {
-    withGamesFromDir("slp", game => {
+    withGamesFromDir(REPLAY_DIR, game => {
         expect(game.getSettings().stageId >= 0).toBe(true);
     });
 });
 
 test("[FUNCTION] withGamesFromDirAsync", () => {
     let num = 0;
-    withGamesFromDirAsync("slp", game => {
+    withGamesFromDirAsync(REPLAY_DIR, game => {
         expect(game.getSettings().stageId >= 0).toBe(true);
         num += 1;
     });

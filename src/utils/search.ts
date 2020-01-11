@@ -10,7 +10,8 @@ import {
     PlayerCriteriaType,
     PlayerFrameCriteriaType,
     PreFrameUpdateCriteriaType,
-    PostFrameUpdateCriteriaType
+    PostFrameUpdateCriteriaType,
+    CriteriaSet
 } from "./common";
 
 export function isValidPlayer(
@@ -18,7 +19,7 @@ export function isValidPlayer(
     criteria: PlayerCriteriaType
 ) {
     for (const key in criteria) {
-        if (!criteria[key].has(player[key])) return false;
+        if (!new CriteriaSet(criteria[key]).has(player[key])) return false;
     }
     return true;
 }
@@ -30,7 +31,8 @@ export function isValidGame(
     const gameSettings = game.getSettings()!;
     for (const key in criteria) {
         if (key === "players" && !isValidPlayer) return false;
-        if (!criteria[key].has(gameSettings[key])) return false;
+        if (!new CriteriaSet(criteria[key]).has(gameSettings[key]))
+            return false;
     }
     return true;
 }
@@ -40,7 +42,7 @@ export function isValidPreFrameUpdate(
     criteria: PreFrameUpdateCriteriaType
 ) {
     for (const key in criteria) {
-        if (!criteria[key].has(pre[key])) return false;
+        if (!new CriteriaSet(criteria[key]).has(pre[key])) return false;
     }
     return true;
 }
@@ -50,7 +52,7 @@ export function isValidPostFrameUpdate(
     criteria: PostFrameUpdateCriteriaType
 ) {
     for (const key in criteria) {
-        if (!criteria[key].has(post[key])) return false;
+        if (!new CriteriaSet(criteria[key]).has(post[key])) return false;
     }
     return true;
 }
@@ -72,12 +74,22 @@ export function isValidFrame(
     frame: FrameEntryType,
     criteria: FrameCriteriaType
 ) {
-    if (!criteria.frame.has(frame.frame)) return false;
+    if (!new CriteriaSet(criteria.frame).has(frame.frame)) return false;
     if (criteria.players) {
-        for (let i = 0; i < 4; i++) {
-            if (!isValidPlayerFrame(frame.players[i], criteria.players[i]))
+        for (let i = 0; i < criteria.players.length; i++) {
+            if (
+                frame.players[i] &&
+                !isValidPlayerFrame(frame.players[i], criteria.players[i])
+            )
                 return false;
-            if (!isValidPlayerFrame(frame.followers[i], criteria.followers[i]))
+        }
+    }
+    if (criteria.followers) {
+        for (let i = 0; i < criteria.followers.length; i++) {
+            if (
+                frame.followers[i] &&
+                !isValidPlayerFrame(frame.followers[i], criteria.followers[i])
+            )
                 return false;
         }
     }
@@ -112,18 +124,12 @@ export function getMatchingGames(
     games: Iterable<SlippiGame>,
     criteria: GameCriteriaType
 ) {
-    const valid = new Array<SlippiGame>();
-    withMatchingGames(games, criteria, (game: SlippiGame) => valid.push(game)); // FIXME: Async? Might have unexpected behavior
-    return valid;
+    return Array.from(games).filter(game => isValidGame(game, criteria));
 }
 
 export function getMatchingFrames(
     frames: Array<FrameEntryType>,
     criteria: FrameCriteriaType
 ) {
-    const valid = new Array<FrameEntryType>();
-    withMatchingFrames(frames, criteria, (frame: FrameEntryType) =>
-        valid.push(frame)
-    );
-    return valid;
+    return Array.from(frames).filter(frame => isValidFrame(frame, criteria));
 }

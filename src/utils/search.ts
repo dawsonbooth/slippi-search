@@ -30,7 +30,25 @@ export function isValidGame(
 ): boolean {
     const gameSettings = game.getSettings()!;
     for (const key in criteria) {
-        if (key === "players" && !isValidPlayer) return false;
+        if (key === "players") {
+            for (let i = 0; i < criteria.players.length; i++) {
+                let matches = false;
+                for (let j in gameSettings.players) {
+                    if (
+                        gameSettings.players[j] &&
+                        criteria.players[i] &&
+                        isValidPlayer(
+                            gameSettings.players[j],
+                            criteria.players[i]
+                        )
+                    ) {
+                        matches = true;
+                        break;
+                    }
+                }
+                if (!matches) return false;
+            }
+        }
         if (!new CriteriaSet(criteria[key]).has(gameSettings[key]))
             return false;
     }
@@ -74,23 +92,41 @@ export function isValidFrame(
     frame: FrameEntryType,
     criteria: FrameCriteriaType
 ) {
-    if (!new CriteriaSet(criteria.frame).has(frame.frame)) return false;
+    if (criteria.frame && !new CriteriaSet(criteria.frame).has(frame.frame))
+        return false;
     if (criteria.players) {
         for (let i = 0; i < criteria.players.length; i++) {
-            if (
-                frame.players[i] &&
-                !isValidPlayerFrame(frame.players[i], criteria.players[i])
-            )
-                return false;
+            let matches = false;
+            for (let j in frame.players) {
+                if (
+                    frame.players[j] &&
+                    criteria.players[i] &&
+                    isValidPlayerFrame(frame.players[j], criteria.players[i])
+                ) {
+                    matches = true;
+                    break;
+                }
+            }
+            if (!matches) return false;
         }
     }
     if (criteria.followers) {
         for (let i = 0; i < criteria.followers.length; i++) {
-            if (
-                frame.followers[i] &&
-                !isValidPlayerFrame(frame.followers[i], criteria.followers[i])
-            )
-                return false;
+            let matches = false;
+            for (let j in frame.followers) {
+                if (
+                    frame.followers[j] &&
+                    criteria.followers[i] &&
+                    isValidPlayerFrame(
+                        frame.followers[j],
+                        criteria.followers[i]
+                    )
+                ) {
+                    matches = true;
+                    break;
+                }
+            }
+            if (!matches) return false;
         }
     }
     return true;

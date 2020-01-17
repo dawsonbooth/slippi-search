@@ -24,7 +24,12 @@ test("[FUNCTION] isValidGame", () => {
     const criteria = {
         stageId: [stages.STAGE_FD, stages.STAGE_DREAM_LAND],
         isTeams: [true],
-        isPAL: [true]
+        isPAL: [true],
+        players: [
+            {
+                playerIndex: [1]
+            }
+        ]
     };
 
     withGamesFromDir(REPLAY_DIR, game => {
@@ -178,10 +183,11 @@ test("[FUNCTION] withMatchingFrames", () => {
 
     const frameCriteria: FrameCriteriaType = {
         players: [
+            null,
             {
                 post: {
                     playerIndex: [1],
-                    percent: [20]
+                    percent: [25]
                 }
             }
         ]
@@ -197,7 +203,7 @@ test("[FUNCTION] withMatchingFrames", () => {
                 frameCriteria,
                 (frame: FrameEntryType) => {
                     // Print information about the frame
-                    expect(frame.players[0].post.percent).toBe(25);
+                    expect(frame.players[1].post.percent).toBe(25);
                 }
             );
         }

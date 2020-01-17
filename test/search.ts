@@ -27,7 +27,7 @@ test("[FUNCTION] isValidGame", () => {
         isPAL: [true],
         players: [
             {
-                playerIndex: [1]
+                characterId: [10]
             }
         ]
     };

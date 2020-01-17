@@ -33,7 +33,7 @@ export function isValidGame(
         if (key === "players") {
             for (let i = 0; i < criteria.players.length; i++) {
                 let matches = false;
-                for (let j in gameSettings.players) {
+                for (let j = 0; j < gameSettings.players.length; j++) {
                     if (
                         gameSettings.players[j] &&
                         criteria.players[i] &&

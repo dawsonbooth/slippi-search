@@ -10,7 +10,7 @@ import {
     isValidPostFrameUpdate,
     isValidPlayerFrame
 } from "../src";
-import { stages, FrameEntryType } from "slp-parser-js";
+import { stages, FrameEntryType, characters } from "slp-parser-js";
 import {
     sortedFrames,
     CriteriaSet,
@@ -22,54 +22,34 @@ const REPLAY_DIR = "slp";
 
 test("[FUNCTION] isValidGame", () => {
     const criteria = {
-        stageId: [stages.STAGE_FD, stages.STAGE_DREAM_LAND],
-        isTeams: [true],
-        isPAL: [true],
         players: [
             {
-                characterId: [10]
+                characterId: [0]
             }
         ]
     };
 
+    let numValid = 0;
+
     withGamesFromDir(REPLAY_DIR, game => {
-        for (const key in criteria) {
-            expect(
-                isValidGame(game, {
-                    [key]: criteria[key]
-                })
-            ).toBe(new CriteriaSet(criteria[key]).has(game.getSettings()[key]));
-        }
+        if (isValidGame(game, criteria)) numValid++;
     });
+
+    expect(numValid).toBe(2);
 });
 
 test("[FUNCTION] isValidPlayer", () => {
     const criteria = {
-        playerIndex: [0],
-        port: [1],
-        characterId: [10],
-        characterColor: [1],
-        startStocks: [[1, 4]],
-        finalStocks: [[1, 4]],
-        type: [5],
-        teamId: [1],
-        controllerFix: [true],
-        nametag: ["test"]
+        characterId: characters.getAllCharacters().map(c => c.id)
     };
 
+    let numValid = 0;
+
     withGamesFromDir(REPLAY_DIR, game => {
-        for (const key in criteria) {
-            expect(
-                isValidPlayer(game.getSettings().players[0], {
-                    [key]: criteria[key]
-                })
-            ).toBe(
-                new CriteriaSet(criteria[key]).has(
-                    game.getSettings().players[0][key]
-                )
-            );
-        }
+        if (isValidPlayer(game.getSettings().players[0], criteria)) numValid++;
     });
+
+    expect(numValid).toBe(10);
 });
 
 test("[FUNCTION] withMatchingGames", () => {
@@ -183,7 +163,6 @@ test("[FUNCTION] withMatchingFrames", () => {
 
     const frameCriteria: FrameCriteriaType = {
         players: [
-            null,
             {
                 post: {
                     playerIndex: [1],

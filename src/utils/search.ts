@@ -99,7 +99,7 @@ export function isValidFrame(
 export function withMatchingGames(
     games: Iterable<SlippiGame>,
     criteria: GameCriteriaType,
-    callback: Function
+    callback: (game: SlippiGame) => void
 ) {
     for (const game of games) {
         if (isValidGame(game, criteria)) {
@@ -111,7 +111,7 @@ export function withMatchingGames(
 export function withMatchingFrames(
     frames: Iterable<FrameEntryType>,
     criteria: FrameCriteriaType,
-    callback: Function
+    callback: (frame: FrameEntryType) => void
 ) {
     for (const frame of frames) {
         if (isValidFrame(frame, criteria)) {

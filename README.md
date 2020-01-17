@@ -24,38 +24,60 @@ This will also add Project Slippi's [slp-parser-js](https://github.com/project-s
 2. Inside this new directory, create a file called `script.js`
 3. Fill the `script.js` file with the following contents:
 
-```js
-const {
+```ts
+import {
     withGamesFromDir,
     isValidGame,
-    withMatchingFrames
-} = require("slippi-search");
+    GameCriteriaType,
+    FrameCriteriaType,
+    withMatchingFrames,
+    sortedFrames
+} from "slippi-search";
+import { stages } from "slp-parser-js";
 
-// Define criteria
-const gameCriteria = {
-    isTeams: [false],
-    isPAL: [true, false] // Can also just be omitted
-};
-
-const frameCriteria = {
+// Define game criteria
+const gameCriteria: GameCriteriaType = {
+    stageId: [stages.STAGE_BATTLEFIELD, stages.STAGE_DREAM_LAND],
     players: [
         {
-            post: {
+            characterId: [0, 20] // Captain Falcon, Falco
+        },
+        {
+            characterId: [19] // Sheik
+        }
+    ],
+    isPAL: [false, true], // Can also just omit
+    isTeams: [false]
+};
+
+// Define frame criteria
+const frameCriteria: FrameCriteriaType = {
+    players: [
+        {
+            pre: {
                 playerIndex: [1],
-                percent: [20]
+                percent: [[10, 20]], // Between 10 and 20 percent
+                facingDirection: [-1]
             }
         }
     ]
 };
 
+const validGames = [];
+const validFrames = [];
+
 // With each game in the directory
-withGamesFromDir("replays", game => {
+withGamesFromDir("./replays", (game: any) => {
     // Check that game matches criteria
     if (isValidGame(game, gameCriteria)) {
-        // With frames that match criteria
+        validGames.push(game);
+
+        // With each frame that matches criteria
         withMatchingFrames(sortedFrames(game), frameCriteria, frame => {
-            // Print information about the frame
-            console.log(frame);
+            validFrames.push(frame);
+
+            // Print info about players in frame
+            console.log(frame.players);
         });
     }
 });

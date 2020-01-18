@@ -34,7 +34,8 @@
         "clean": "rimraf dist",
         "prebuild": "yarn run clean",
         "build": "rollup -c",
-        "docs": "yarn typedoc"
+        "docs": "yarn typedoc",
+        "postdocs": "touch docs/.nojekyll"
     },
     "jest": {
         "testRegex": "/test/.*",

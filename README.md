@@ -6,7 +6,7 @@
 
 # Description
 
-This Node.js package is a collection of useful functions for searching through and filtering Slippi Replays.
+This Node.js package is a collection of useful functions for searching through and filtering [Slippi](https://github.com/project-slippi/project-slippi) replays.
 
 # Installation
 

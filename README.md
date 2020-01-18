@@ -20,6 +20,10 @@ This will also add Project Slippi's [slp-parser-js](https://github.com/project-s
 
 # Usage
 
+For additional usage documentation, [check out the docs](https://dawsonbooth.github.io/slippi-search/).
+
+## Example
+
 1. Create a fresh directory on your disk
 2. Inside this new directory, create a file called `search.js`
 3. Fill the `search.js` file with the following contents:

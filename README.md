@@ -21,22 +21,20 @@ This will also add Project Slippi's [slp-parser-js](https://github.com/project-s
 # Usage
 
 1. Create a fresh directory on your disk
-2. Inside this new directory, create a file called `script.js`
-3. Fill the `script.js` file with the following contents:
+2. Inside this new directory, create a file called `search.js`
+3. Fill the `search.js` file with the following contents:
 
-```ts
+```js
 import {
     withGamesFromDir,
     isValidGame,
-    GameCriteriaType,
-    FrameCriteriaType,
     withMatchingFrames,
     sortedFrames
 } from "slippi-search";
 import { stages } from "slp-parser-js";
 
 // Define game criteria
-const gameCriteria: GameCriteriaType = {
+const gameCriteria = {
     stageId: [stages.STAGE_BATTLEFIELD, stages.STAGE_DREAM_LAND],
     players: [
         {
@@ -51,7 +49,7 @@ const gameCriteria: GameCriteriaType = {
 };
 
 // Define frame criteria
-const frameCriteria: FrameCriteriaType = {
+const frameCriteria = {
     players: [
         {
             pre: {
@@ -85,7 +83,7 @@ withGamesFromDir("./replays", (game: any) => {
 
 4. Change the "replays" path to some directory that holds some of your slp files.
 5. Browse to the directory from the command line and run the command: `npm install slippi-search`. This should create a `node_modules` directory in the folder.
-6. Run the command: `node script.js`. This will run the script above to search through and print data about the replay files that met the criteria in that directory.
+6. Run the command: `node search.js`. This will run the script above to search through and print data about the replay files that met the criteria in that directory.
 
 # License
 

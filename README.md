@@ -30,13 +30,13 @@ For additional usage documentation, [check out the docs](https://dawsonbooth.git
 3. Fill the `search.js` file with the following contents:
 
 ```js
-import {
+const {
     withGamesFromDir,
     isValidGame,
     withMatchingFrames,
     sortedFrames
-} from "slippi-search";
-import { stages } from "slp-parser-js";
+} = require("slippi-search");
+const { stages } = require("slp-parser-js");
 
 // Define game criteria
 const gameCriteria = {
@@ -70,7 +70,7 @@ const validGames = [];
 const validFrames = [];
 
 // With each game in the directory
-withGamesFromDir("./replays", (game: any) => {
+withGamesFromDir("D:/Desktop/Gaming/Nintendo/Dolphin/Slippi/Casual", game => {
     // Check that game matches criteria
     if (isValidGame(game, gameCriteria)) {
         validGames.push(game);

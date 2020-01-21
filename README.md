@@ -2,7 +2,8 @@
 
 [![npm version](http://img.shields.io/npm/v/slippi-search.svg?style=flat)](https://npmjs.org/package/slippi-search "View this project on npm")
 [![downloads](http://img.shields.io/npm/dt/slippi-search.svg?style=flat)](https://npmjs.org/package/slippi-search)
-[![downloads](http://img.shields.io/npm/l/slippi-search.svg?style=flat)](https://github.com/dawsonbooth/slippi-search/blob/master/LICENSE)
+[![build status](https://github.com/dawsonbooth/slippi-search/workflows/build/badge.svg)](https://github.com/dawsonbooth/slippi-search/actions?workflow=build)
+[![license](http://img.shields.io/npm/l/slippi-search.svg?style=flat)](https://github.com/dawsonbooth/slippi-search/blob/master/LICENSE)
 
 # Description
 

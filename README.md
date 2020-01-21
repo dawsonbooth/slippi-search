@@ -70,7 +70,7 @@ const validGames = [];
 const validFrames = [];
 
 // With each game in the directory
-withGamesFromDir("D:/Desktop/Gaming/Nintendo/Dolphin/Slippi/Casual", game => {
+withGamesFromDir("replays", game => {
     // Check that game matches criteria
     if (isValidGame(game, gameCriteria)) {
         validGames.push(game);

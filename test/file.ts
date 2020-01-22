@@ -7,8 +7,10 @@ import {
 const REPLAY_DIR = "slp";
 
 test("[FUNCTION] getGamesFromDir", () => {
-    const games = getGamesFromDir(REPLAY_DIR);
+    let games = getGamesFromDir(REPLAY_DIR);
     expect(games.length).toBe(10);
+    games = getGamesFromDir(REPLAY_DIR, true);
+    expect(games.length).toBe(40);
 });
 
 test("[FUNCTION] withGamesFromDir", () => {

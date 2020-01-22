@@ -2,7 +2,8 @@
 
 [![npm version](http://img.shields.io/npm/v/slippi-search.svg?style=flat)](https://npmjs.org/package/slippi-search "View this project on npm")
 [![downloads](http://img.shields.io/npm/dt/slippi-search.svg?style=flat)](https://npmjs.org/package/slippi-search)
-[![downloads](http://img.shields.io/npm/l/slippi-search.svg?style=flat)](https://github.com/dawsonbooth/slippi-search/blob/master/LICENSE)
+[![build status](https://github.com/dawsonbooth/slippi-search/workflows/build/badge.svg)](https://github.com/dawsonbooth/slippi-search/actions?workflow=build)
+[![license](http://img.shields.io/npm/l/slippi-search.svg?style=flat)](https://github.com/dawsonbooth/slippi-search/blob/master/LICENSE)
 
 # Description
 
@@ -29,13 +30,13 @@ For additional usage documentation, [check out the docs](https://dawsonbooth.git
 3. Fill the `search.js` file with the following contents:
 
 ```js
-import {
+const {
     withGamesFromDir,
     isValidGame,
     withMatchingFrames,
     sortedFrames
-} from "slippi-search";
-import { stages } from "slp-parser-js";
+} = require("slippi-search");
+const { stages } = require("slp-parser-js");
 
 // Define game criteria
 const gameCriteria = {
@@ -69,7 +70,7 @@ const validGames = [];
 const validFrames = [];
 
 // With each game in the directory
-withGamesFromDir("./replays", (game: any) => {
+withGamesFromDir("replays", game => {
     // Check that game matches criteria
     if (isValidGame(game, gameCriteria)) {
         validGames.push(game);

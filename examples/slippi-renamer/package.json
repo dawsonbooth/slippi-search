@@ -1,0 +1,13 @@
+{
+  "name": "slippi-renamer",
+  "version": "1.0.0",
+  "description": "slippi-search example for renaming files",
+  "main": "index.ts",
+  "author": "Dawson Booth",
+  "license": "MIT",
+  "dependencies": {
+    "slippi-search": "^1.3.0",
+    "slp-parser-js": "^4.1.0"
+  },
+  "devDependencies": {}
+}

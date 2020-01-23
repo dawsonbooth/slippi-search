@@ -21,7 +21,7 @@ This will also add Project Slippi's [slp-parser-js](https://github.com/project-s
 
 # Usage
 
-For additional usage documentation, [check out the docs](https://dawsonbooth.github.io/slippi-search/).
+See some [working examples](https://github.com/dawsonbooth/slippi-search/tree/master/examples), or [check out the docs](https://dawsonbooth.github.io/slippi-search/).
 
 ## Example
 

@@ -30,9 +30,9 @@ semver@^6.3.0:
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
 slippi-search@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/slippi-search/-/slippi-search-1.3.1.tgz#9cf67dd4da95b7724ca533962094981dbe534353"
-  integrity sha512-1QOoXNgrg96m5EkMAivaAQ/p92nsxBSBWOu/Zjh5sEqNK6ie4RKxsOsI2QvaK50oVcwdj7BeaKXiaGpY1N+7RQ==
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/slippi-search/-/slippi-search-1.3.3.tgz#7862a77311237373144b51bb47796a182bc21aed"
+  integrity sha512-cbz7Vu+K3eZ8ib1WtU0WjexOsicO9ceFi7OIdqqWmPEyx9wGWx0B71Q+QoV41tiE9iH34oIMF8NysuwYPpbVEg==
   dependencies:
     lodash "^4.17.15"
     slp-parser-js "^4.0.0"

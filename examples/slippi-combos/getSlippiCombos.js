@@ -1,10 +1,15 @@
+/* Credit to https://gist.github.com/NikhilNarayana/d45e328e9ea47127634f2faf575e8dcf for most of this script! */
+/* Let this example serve as a slippi-search alternative for the above */
+/* Run a `git diff` to see the changes that were made and just how flexible slippi-search can be! */
+
 const fs = require('fs');
 const _ = require('lodash');
 const path = require('path');
 const slp = require('slp-parser-js');
 const SlippiGame = slp.default; // npm install slp-parser-js
+const { getGamesFromDir, isValidGame } = require("slippi-search");
 
-const basePath = path.join(__dirname, 'slp/'); // this var is "<directory your script is in>/slp"
+const basePath = 'slp' // this var is "<directory your script is in>/slp"
 
 const outputFilename = "./combos.json";
 
@@ -26,6 +31,22 @@ const filterByCharacters = []; //add character names as strings. Use the regular
 var minimumComboPercent = 60; // this decides the threshold for combos
 var originalMin = minimumComboPercent; // we use this to reset the threshold
 
+// Game Criteria
+const gameCriteria = {
+  stageId: [2, 3, 8, 28, 31, 32], // Only legal stages
+  players: [
+      {
+          characterId: [0], // Limit to only Captain Falcon vs Falco
+          type: [0, 2, 3] // Non-CPU
+      },
+      {
+        characterId: [20],
+        type: [0, 2, 3]
+      }
+  ],
+  isPAL: [false] // NTSC only of course
+};
+
 // Removal Statistics
 var numWobbles = 0;
 var numCG = 0;
@@ -41,23 +62,6 @@ function shuffle(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
-}
-
-// allow putting files in folders
-function walk(dir) {
-  let results = [];
-  let list = fs.readdirSync(dir);
-  _.each(list, (file) => {
-    file = path.join(dir, file);
-    let stat = fs.statSync(file);
-    if (stat && stat.isDirectory()) {
-      // Recurse into a subdirectory
-      results = results.concat(walk(file));
-    } else if (path.extname(file) === ".slp"){
-      results.push(file);
-    }
-  });
-  return results;
 }
 
 function filterCombos(combos, settings, metadata) {
@@ -121,25 +125,25 @@ function filterCombos(combos, settings, metadata) {
 
 function getCombos() {
   let checkPercent = .1;
-  let files = walk(basePath);
-  console.log(`${files.length} files found, starting to filter for ${minimumComboPercent}% combos`);
-  _.each(files, (file, i) => {
+  let games = getGamesFromDir(basePath, true);
+  console.log(`${games.length} files found, starting to filter for ${minimumComboPercent}% combos`);
+
+  games.forEach((game, i) => {
+    if (!isValidGame(game, gameCriteria)) return;
+
+    const file = game.getFilePath();
+
     try {
-      const game = new SlippiGame(file);
 
       // since it is less intensive to get the settings we do that first
       const settings = game.getSettings();
       const metadata = game.getMetadata();
 
-      // skip to next file if CPU exists
-      const cpu = _.some(settings.players, (player) => player.type != 0)
+      // skip to next file if not singles
       const notsingles = settings.players.length != 2;
-      if (cpu) {
-        numCPU++;
+      if (notsingles) {
         return;
-      } else if (notsingles) {
-        return;
-      }
+      } // TODO: numPlayers in criteria
 
       // Calculate stats and pull out the combos
       const stats = game.getStats();
@@ -178,7 +182,7 @@ function getCombos() {
       badFiles++;
       console.log(`File ${i+1} | ${file} is bad`);
     }
-    if (i/files.length >= checkPercent && checkPercent != 1) {
+    if (i/games.length >= checkPercent && checkPercent != 1) {
       console.log(`About ${checkPercent * 100}% of files have been checked`);
       checkPercent += .1;
     }
@@ -191,6 +195,6 @@ function getCombos() {
   console.log(`${numCG} chaingrab(s) removed`);
   console.log(`${puffMiss} Puff combo(s) removed\n`);
   console.log(`${dolphin.queue.length} good combo(s) found`)
-  console.log(`${noCombos / (files.length - badFiles) * 100}% of the good files had no valid combos`);
+  console.log(`${noCombos / (games.length - badFiles) * 100}% of the good files had no valid combos`);
 }
 getCombos();

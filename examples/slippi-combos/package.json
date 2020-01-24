@@ -1,0 +1,11 @@
+{
+  "name": "slippi-combos",
+  "version": "1.0.0",
+  "description": "slippi-search example for getting combos",
+  "main": "getSlippiCombos.js",
+  "author": "Dawson Booth",
+  "license": "MIT",
+  "dependencies": {
+    "slippi-search": "^1.3.1"
+  }
+}

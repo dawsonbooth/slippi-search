@@ -5,7 +5,7 @@ import {
 } from "../src";
 import path = require("path");
 
-const REPLAY_DIR = "slp";
+const REPLAY_DIR = "./slp";
 
 test("[FUNCTION] getGamesFromDir", () => {
     let games = getGamesFromDir(REPLAY_DIR);
@@ -37,12 +37,4 @@ test("[FUNCTION] withGamesFromDirAsync", () => {
         num++;
     });
     expect(num).toBe(0);
-});
-
-test("[ERROR] Throw error on invalid path", () => {
-    try {
-        getGamesFromDir(null);
-    } catch (err) {
-        expect(err.message).toBe(`Path '${null}' does not exist`);
-    }
 });

@@ -1,6 +1,6 @@
 /* Credit to https://github.com/mtimkovich/slippi-renamer for most of this script! */
 /* Let this example serve as a slippi-search alternative for the above */
-/* Run a `git diff` to see how few changes were made and just how flexible slippi-search can be! */
+/* Run a `git diff` to see the changes that were made and just how flexible slippi-search can be! */
 
 const fs = require('fs');
 const path = require('path');

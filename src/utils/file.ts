@@ -4,7 +4,7 @@ import SlippiGame from "slp-parser-js";
 
 export function withGamesFromDir(
     startPath: string,
-    callback: (game: SlippiGame) => void,
+    callback: (game: SlippiGame, index: number, array: string[]) => void,
     recursive?: boolean
 ) {
     const filter = /\.slp$/;
@@ -12,19 +12,22 @@ export function withGamesFromDir(
     if (!fs.existsSync(startPath))
         throw new Error(`Path '${startPath}' does not exist`);
 
-    for (const f of fs.readdirSync(startPath)) {
+    const files = fs.readdirSync(startPath);
+
+    files.forEach((f, index, array) => {
         const fullPath = path.join(startPath, f);
 
         if (recursive && fs.statSync(fullPath).isDirectory())
             withGamesFromDir(fullPath, callback, recursive);
 
-        if (filter.test(fullPath)) callback(new SlippiGame(fullPath));
-    }
+        if (filter.test(fullPath))
+            callback(new SlippiGame(fullPath), index, array);
+    });
 }
 
 export function withGamesFromDirAsync(
     startPath: string,
-    callback: (game: SlippiGame) => void,
+    callback: (game: SlippiGame, index: number, array: string[]) => void,
     recursive?: boolean
 ) {
     const filter = /\.slp$/;
@@ -34,13 +37,14 @@ export function withGamesFromDirAsync(
             throw new Error(`Path '${startPath}' does not exist`);
         }
 
-        files.forEach(f => {
+        files.forEach((f, index, array) => {
             const fullPath = path.join(startPath, f);
 
             if (recursive && fs.statSync(fullPath).isDirectory())
-                withGamesFromDir(fullPath, callback, recursive);
+                withGamesFromDirAsync(fullPath, callback, recursive);
 
-            if (filter.test(fullPath)) callback(new SlippiGame(fullPath));
+            if (filter.test(fullPath))
+                callback(new SlippiGame(fullPath), index, array);
         });
     });
 }

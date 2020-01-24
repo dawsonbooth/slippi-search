@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Range | slippi-search</title>
+	<title>CriteriaSet | slippi-search</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_utils_common_.html">&quot;utils/common&quot;</a>
+					<a href="../modules/_common_.html">&quot;common&quot;</a>
 				</li>
 				<li>
-					<a href="_utils_common_.range.html">Range</a>
+					<a href="_common_.criteriaset.html">CriteriaSet</a>
 				</li>
 			</ul>
-			<h1>Class Range&lt;E&gt;</h1>
+			<h1>Class CriteriaSet&lt;E&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -81,7 +81,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Range</span>
+						<span class="target">CriteriaSet</span>
 					</li>
 				</ul>
 			</section>
@@ -89,93 +89,90 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported"><a href="_utils_common_.range.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_common_.criteriaset.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_utils_common_.range.html#end" class="tsd-kind-icon">end</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_utils_common_.range.html#start" class="tsd-kind-icon">start</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_common_.criteriaset.html#ranges" class="tsd-kind-icon">ranges</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_common_.criteriaset.html#values" class="tsd-kind-icon">values</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_utils_common_.range.html#has" class="tsd-kind-icon">has</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_common_.criteriaset.html#has" class="tsd-kind-icon">has</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Range<span class="tsd-signature-symbol">(</span>start<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span>, end<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_utils_common_.range.html" class="tsd-signature-type">Range</a></li>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Criteria<wbr>Set<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../modules/_common_.html#criterion" class="tsd-signature-type">Criterion</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_common_.criteriaset.html" class="tsd-signature-type">CriteriaSet</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dawsonbooth/slippi-search/blob/4d4db48/src/utils/common.ts#L16">src/utils/common.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/dawsonbooth/slippi-search/blob/d37ca46/src/common.ts#L32">src/common.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>start: <span class="tsd-signature-type">E</span></h5>
-								</li>
-								<li>
-									<h5>end: <span class="tsd-signature-type">E</span></h5>
+									<h5>args: <a href="../modules/_common_.html#criterion" class="tsd-signature-type">Criterion</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_utils_common_.range.html" class="tsd-signature-type">Range</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_common_.criteriaset.html" class="tsd-signature-type">CriteriaSet</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-					<a name="end" class="tsd-anchor"></a>
-					<h3>end</h3>
-					<div class="tsd-signature tsd-kind-icon">end<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="ranges" class="tsd-anchor"></a>
+					<h3>ranges</h3>
+					<div class="tsd-signature tsd-kind-icon">ranges<span class="tsd-signature-symbol">:</span> <a href="_common_.range.html" class="tsd-signature-type">Range</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = new Array&lt;Range&lt;E&gt;&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dawsonbooth/slippi-search/blob/4d4db48/src/utils/common.ts#L16">src/utils/common.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/dawsonbooth/slippi-search/blob/d37ca46/src/common.ts#L31">src/common.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-					<a name="start" class="tsd-anchor"></a>
-					<h3>start</h3>
-					<div class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="values" class="tsd-anchor"></a>
+					<h3>values</h3>
+					<div class="tsd-signature tsd-kind-icon">values<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new Set&lt;E&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dawsonbooth/slippi-search/blob/4d4db48/src/utils/common.ts#L15">src/utils/common.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/dawsonbooth/slippi-search/blob/d37ca46/src/common.ts#L32">src/common.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="has" class="tsd-anchor"></a>
 					<h3>has</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon">has<span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dawsonbooth/slippi-search/blob/4d4db48/src/utils/common.ts#L23">src/utils/common.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/dawsonbooth/slippi-search/blob/d37ca46/src/common.ts#L49">src/common.ts:49</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -196,72 +193,72 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_common_.html">&quot;common&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_file_.html">&quot;file&quot;</a>
+					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">&quot;index&quot;</a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_utils_common_.html">&quot;utils/common&quot;</a>
-					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_utils_file_.html">&quot;utils/file&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_utils_search_.html">&quot;utils/search&quot;</a>
+						<a href="../modules/_search_.html">&quot;search&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_utils_common_.criteriaset.html" class="tsd-kind-icon">Criteria<wbr>Set</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
-						<a href="_utils_common_.range.html" class="tsd-kind-icon">Range</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_common_.criteriaset.html" class="tsd-kind-icon">Criteria<wbr>Set</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
-								<a href="_utils_common_.range.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_common_.criteriaset.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-								<a href="_utils_common_.range.html#end" class="tsd-kind-icon">end</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_common_.criteriaset.html#ranges" class="tsd-kind-icon">ranges</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-								<a href="_utils_common_.range.html#start" class="tsd-kind-icon">start</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_common_.criteriaset.html#values" class="tsd-kind-icon">values</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-								<a href="_utils_common_.range.html#has" class="tsd-kind-icon">has</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_common_.criteriaset.html#has" class="tsd-kind-icon">has</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="_common_.range.html" class="tsd-kind-icon">Range</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
-						<a href="../modules/_utils_common_.html#criterion" class="tsd-kind-icon">Criterion</a>
+						<a href="../modules/_common_.html#criterion" class="tsd-kind-icon">Criterion</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_utils_common_.html#framecriteriatype" class="tsd-kind-icon">Frame<wbr>Criteria<wbr>Type</a>
+						<a href="../modules/_common_.html#framecriteriatype" class="tsd-kind-icon">Frame<wbr>Criteria<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_utils_common_.html#gamecriteriatype" class="tsd-kind-icon">Game<wbr>Criteria<wbr>Type</a>
+						<a href="../modules/_common_.html#gamecriteriatype" class="tsd-kind-icon">Game<wbr>Criteria<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_utils_common_.html#playercriteriatype" class="tsd-kind-icon">Player<wbr>Criteria<wbr>Type</a>
+						<a href="../modules/_common_.html#playercriteriatype" class="tsd-kind-icon">Player<wbr>Criteria<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_utils_common_.html#playerframecriteriatype" class="tsd-kind-icon">Player<wbr>Frame<wbr>Criteria<wbr>Type</a>
+						<a href="../modules/_common_.html#playerframecriteriatype" class="tsd-kind-icon">Player<wbr>Frame<wbr>Criteria<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_utils_common_.html#playertype" class="tsd-kind-icon">Player<wbr>Type</a>
+						<a href="../modules/_common_.html#playertype" class="tsd-kind-icon">Player<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_utils_common_.html#postframeupdatecriteriatype" class="tsd-kind-icon">Post<wbr>Frame<wbr>Update<wbr>Criteria<wbr>Type</a>
+						<a href="../modules/_common_.html#postframeupdatecriteriatype" class="tsd-kind-icon">Post<wbr>Frame<wbr>Update<wbr>Criteria<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_utils_common_.html#preframeupdatecriteriatype" class="tsd-kind-icon">Pre<wbr>Frame<wbr>Update<wbr>Criteria<wbr>Type</a>
+						<a href="../modules/_common_.html#preframeupdatecriteriatype" class="tsd-kind-icon">Pre<wbr>Frame<wbr>Update<wbr>Criteria<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_utils_common_.html#sortedframes" class="tsd-kind-icon">sorted<wbr>Frames</a>
+						<a href="../modules/_common_.html#sortedframes" class="tsd-kind-icon">sorted<wbr>Frames</a>
 					</li>
 				</ul>
 			</nav>

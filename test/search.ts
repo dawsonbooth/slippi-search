@@ -16,7 +16,7 @@ import {
     CriteriaSet,
     FrameCriteriaType,
     GameCriteriaType
-} from "../src/utils/common";
+} from "../src/common";
 
 const REPLAY_DIR = "slp";
 

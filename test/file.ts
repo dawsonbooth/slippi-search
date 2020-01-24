@@ -3,6 +3,7 @@ import {
     withGamesFromDir,
     withGamesFromDirAsync
 } from "../src";
+import path = require("path");
 
 const REPLAY_DIR = "slp";
 
@@ -16,6 +17,13 @@ test("[FUNCTION] getGamesFromDir", () => {
 test("[FUNCTION] withGamesFromDir", () => {
     let num = 0;
     withGamesFromDir(REPLAY_DIR, game => {
+        expect(game.getSettings().stageId >= 0).toBe(true);
+        num++;
+    });
+    expect(num).toBe(10);
+
+    num = 0;
+    withGamesFromDir(path.resolve(REPLAY_DIR), game => {
         expect(game.getSettings().stageId >= 0).toBe(true);
         num++;
     });

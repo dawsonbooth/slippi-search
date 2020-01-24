@@ -9,20 +9,21 @@ export function withGamesFromDir(
     callback: (game: SlippiGame) => void,
     recursive?: boolean
 ) {
-    if (!fs.existsSync(startPath))
+    try {
+        const absStartPath = path.resolve(startPath);
+        const files = fs.readdirSync(absStartPath);
+
+        files.map(f => {
+            const absFilePath = path.join(absStartPath, f);
+
+            if (recursive && fs.statSync(absFilePath).isDirectory())
+                withGamesFromDir(absFilePath, callback, recursive);
+            else if (REPLAY_EXT.test(absFilePath))
+                callback(new SlippiGame(absFilePath));
+        });
+    } catch (err) {
         throw new Error(`Path '${startPath}' does not exist`);
-
-    const files = fs.readdirSync(startPath);
-
-    files.map(f => {
-        const filePath = path.join(startPath, f);
-        const extFilePath = path.join(process.cwd(), filePath);
-
-        if (recursive && fs.statSync(filePath).isDirectory())
-            withGamesFromDir(filePath, callback, recursive);
-        else if (REPLAY_EXT.test(filePath))
-            callback(new SlippiGame(extFilePath));
-    });
+    }
 }
 
 export function withGamesFromDirAsync(
@@ -30,21 +31,21 @@ export function withGamesFromDirAsync(
     callback: (game: SlippiGame) => void,
     recursive?: boolean
 ) {
-    fs.readdir(startPath, (err, files) => {
-        if (err) {
-            throw new Error(`Path '${startPath}' does not exist`);
-        }
+    try {
+        const absStartPath = path.resolve(startPath);
 
-        files.map(f => {
-            const filePath = path.join(startPath, f);
-            const extFilePath = path.join(process.cwd(), filePath);
-
-            if (recursive && fs.statSync(filePath).isDirectory())
-                withGamesFromDirAsync(filePath, callback, recursive);
-            else if (REPLAY_EXT.test(filePath))
-                callback(new SlippiGame(extFilePath));
+        fs.readdir(absStartPath, (err, files) => {
+            files.map(f => {
+                const absFilePath = path.join(absStartPath, f);
+                if (recursive && fs.statSync(absFilePath).isDirectory())
+                    withGamesFromDirAsync(absFilePath, callback, recursive);
+                else if (REPLAY_EXT.test(absFilePath))
+                    callback(new SlippiGame(absFilePath));
+            });
         });
-    });
+    } catch (err) {
+        throw new Error(`Path '${startPath}' does not exist`);
+    }
 }
 
 export function getGamesFromDir(startPath: string, recursive?: boolean) {

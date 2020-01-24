@@ -9,14 +9,14 @@ import {
     isValidPreFrameUpdate,
     isValidPostFrameUpdate,
     isValidPlayerFrame
-} from "../src";
+} from "..";
 import { stages, FrameEntryType, characters } from "slp-parser-js";
 import {
     sortedFrames,
     CriteriaSet,
     FrameCriteriaType,
     GameCriteriaType
-} from "../src/common";
+} from "../common";
 
 const REPLAY_DIR = "slp";
 

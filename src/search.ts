@@ -30,7 +30,7 @@ export function isValidGame(
 ): boolean {
     const gameSettings = game.getSettings()!;
     for (const key in criteria) {
-        if (key == "players") {
+        if (key === "players") {
             for (let critPlayer of criteria.players) {
                 let playerFound = false;
                 for (let player of gameSettings.players) {
@@ -147,7 +147,7 @@ export function getMatchingGames(
 }
 
 export function getMatchingFrames(
-    frames: Array<FrameEntryType>,
+    frames: FrameEntryType[],
     criteria: FrameCriteriaType
 ) {
     return Array.from(frames).filter(frame => isValidFrame(frame, criteria));

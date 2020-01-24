@@ -126,4 +126,4 @@ export type PlayerCriteriaType = {
 };
 
 // slp-parser-js
-export type PlayerType = GameStartType["players"][0]
+export type PlayerType = GameStartType["players"][0];

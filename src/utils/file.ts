@@ -2,49 +2,47 @@ import path from "path";
 import fs from "fs";
 import SlippiGame from "slp-parser-js";
 
+const REPLAY_EXT = /\.slp$/;
+
 export function withGamesFromDir(
     startPath: string,
-    callback: (game: SlippiGame, index: number, array: string[]) => void,
+    callback: (game: SlippiGame) => void,
     recursive?: boolean
 ) {
-    const filter = /\.slp$/;
-
     if (!fs.existsSync(startPath))
         throw new Error(`Path '${startPath}' does not exist`);
 
     const files = fs.readdirSync(startPath);
 
-    files.forEach((f, index, array) => {
-        const fullPath = path.join(startPath, f);
+    files.map(f => {
+        const filePath = path.join(startPath, f);
+        const extFilePath = path.join(process.cwd(), filePath);
 
-        if (recursive && fs.statSync(fullPath).isDirectory())
-            withGamesFromDir(fullPath, callback, recursive);
-
-        if (filter.test(fullPath))
-            callback(new SlippiGame(fullPath), index, array);
+        if (recursive && fs.statSync(filePath).isDirectory())
+            withGamesFromDir(filePath, callback, recursive);
+        else if (REPLAY_EXT.test(filePath))
+            callback(new SlippiGame(extFilePath));
     });
 }
 
 export function withGamesFromDirAsync(
     startPath: string,
-    callback: (game: SlippiGame, index: number, array: string[]) => void,
+    callback: (game: SlippiGame) => void,
     recursive?: boolean
 ) {
-    const filter = /\.slp$/;
-
     fs.readdir(startPath, (err, files) => {
         if (err) {
             throw new Error(`Path '${startPath}' does not exist`);
         }
 
-        files.forEach((f, index, array) => {
-            const fullPath = path.join(startPath, f);
+        files.map(f => {
+            const filePath = path.join(startPath, f);
+            const extFilePath = path.join(process.cwd(), filePath);
 
-            if (recursive && fs.statSync(fullPath).isDirectory())
-                withGamesFromDirAsync(fullPath, callback, recursive);
-
-            if (filter.test(fullPath))
-                callback(new SlippiGame(fullPath), index, array);
+            if (recursive && fs.statSync(filePath).isDirectory())
+                withGamesFromDirAsync(filePath, callback, recursive);
+            else if (REPLAY_EXT.test(filePath))
+                callback(new SlippiGame(extFilePath));
         });
     });
 }

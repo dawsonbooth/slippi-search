@@ -25,7 +25,7 @@ class Range<E> {
     }
 }
 
-type Criterion<E> = (E | E[])[];
+export type Criterion<E> = (E | E[])[];
 
 export class CriteriaSet<E> {
     ranges: Range<E>[] = new Array<Range<E>>();

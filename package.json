@@ -1,53 +1,56 @@
 {
-    "name": "slippi-search",
-    "version": "1.3.9",
-    "description": "A collection of useful functions for searching through Slippi Replays",
-    "license": "MIT",
-    "repository": "dawsonbooth/slippi-search",
-    "keywords": [
-        "backend",
-        "typescript",
-        "slippi",
-        "slp",
-        "smash",
-        "melee",
-        "ssbm",
-        "slp-parser-js"
-    ],
-    "author": {
-        "name": "Dawson Booth",
-        "email": "npmjs@dawsonbooth.com",
-        "url": "https://github.com/dawsonbooth"
-    },
-    "engines": {
-        "node": ">=6"
-    },
-    "files": [
-        "dist/**/*"
-    ],
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "lint": "tslint -p tsconfig.json",
-        "test": "jest",
-        "build": "tsc",
-        "docs": "yarn typedoc",
-        "postdocs": "touch docs/.nojekyll"
-    },
-    "dependencies": {
-        "lodash": "^4.17.15",
-        "slp-parser-js": "^4.0.0"
-    },
-    "devDependencies": {
-        "@types/jest": "^24.9.1",
-        "@types/lodash": "^4.14.137",
-        "@types/node": "^13.5.0",
-        "jest": "^25.1.0",
-        "prettier": "^1.19.1",
-        "ts-jest": "^25.0.0",
-        "tslint": "^6.0.0",
-        "tslint-config-prettier": "^1.18.0",
-        "typedoc": "^0.16.7",
-        "typescript": "^3.6.2"
-    }
+  "name": "slippi-search",
+  "version": "1.3.9",
+  "description": "A collection of useful functions for searching through Slippi Replays",
+  "license": "MIT",
+  "repository": "dawsonbooth/slippi-search",
+  "keywords": [
+    "backend",
+    "typescript",
+    "slippi",
+    "slp",
+    "smash",
+    "melee",
+    "ssbm",
+    "slp-parser-js"
+  ],
+  "author": {
+    "name": "Dawson Booth",
+    "email": "npmjs@dawsonbooth.com",
+    "url": "https://github.com/dawsonbooth"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "lint": "eslint",
+    "test": "jest",
+    "build": "tsc",
+    "docs": "yarn typedoc",
+    "postdocs": "touch docs/.nojekyll"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "slp-parser-js": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.9.1",
+    "@types/lodash": "^4.14.137",
+    "@types/node": "^13.5.0",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.0.0",
+    "typedoc": "^0.16.7",
+    "typescript": "^3.6.2"
+  }
 }

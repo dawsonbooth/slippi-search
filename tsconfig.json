@@ -1,14 +1,14 @@
 {
-    "compilerOptions": {
-        "declaration": true,
-        "declarationDir": "./dist",
-        // "module": "es5", // Specifies module system
-        "moduleResolution": "node",
-        "outDir": "./dist",
-        "target": "es5", // Translate newer JS constructs down to an older version like es5
-        "esModuleInterop": true,
-        "downlevelIteration": true
-    },
-    "include": ["./src/**/*"],
-    "exclude": ["node_modules", "**/__tests__/*"]
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist",
+    // "module": "es5", // Specifies module system
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "target": "es5", // Translate newer JS constructs down to an older version like es5
+    "esModuleInterop": true,
+    "downlevelIteration": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "**/__tests__/*", "examples"]
 }

@@ -2,7 +2,6 @@ import { getGamesFromDir, withGamesFromDir, withGamesFromDirAsync } from "..";
 import path = require("path");
 
 const REPLAY_DIR = "./slp";
-console.log(path.isAbsolute(REPLAY_DIR));
 
 test("[FUNCTION] getGamesFromDir", () => {
   let games = getGamesFromDir(REPLAY_DIR);

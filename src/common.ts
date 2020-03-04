@@ -7,9 +7,9 @@ import SlippiGame, {
 } from "slp-parser-js";
 
 /**
- * Sort frames from given [[SlippiGame]] game
+ * Sort frames from given [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) game
  *
- * @param game [[SlippiGame]] game to get frames from
+ * @param game [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) game to get frames from
  */
 export function sortedFrames(game: SlippiGame): FrameEntryType[] {
   const frames = game.getFrames();
@@ -30,17 +30,21 @@ class Range<E> {
   }
 }
 
-export type Criterion<E> = (E | E[])[];
+export type Criterion<P> = (P | P[])[];
 
-export class CriteriaSet<E> {
-  ranges: Range<E>[];
-  values: Set<E>;
+type Criteria<T> = {
+  [P in keyof T]?: Criterion<T[P]>;
+};
 
-  constructor(args: Criterion<E>) {
+export class CriteriaSet<P> {
+  ranges: Range<P>[];
+  values: Set<P>;
+
+  constructor(args: Criterion<P>) {
     if (args === undefined) return;
 
     const ranges = [];
-    const values = new Set<E>();
+    const values = new Set<P>();
 
     for (const arg of args) {
       if (arg instanceof Array) {
@@ -57,15 +61,17 @@ export class CriteriaSet<E> {
     this.values = values;
   }
 
-  has(arg: E): boolean {
+  has(arg: P): boolean {
     if (this.values.has(arg)) return true;
     for (const range of this.ranges) if (range.has(arg)) return true;
     return false;
   }
 }
 
-export type FrameCriteriaType = {
-  frame?: Criterion<FrameEntryType["frame"]>;
+export type FrameCriteriaType = Omit<
+  Criteria<FrameEntryType>,
+  "players" | "followers"
+> & {
   players?: PlayerFrameCriteriaType[];
   followers?: PlayerFrameCriteriaType[];
 };
@@ -75,66 +81,15 @@ export type PlayerFrameCriteriaType = {
   post?: PostFrameUpdateCriteriaType;
 };
 
-export type PreFrameUpdateCriteriaType = {
-  frame?: Criterion<PreFrameUpdateType["frame"]>;
-  playerIndex?: Criterion<PreFrameUpdateType["playerIndex"]>;
-  isFollower?: Criterion<PreFrameUpdateType["isFollower"]>;
-  seed?: Criterion<PreFrameUpdateType["seed"]>;
-  actionStateId?: Criterion<PreFrameUpdateType["actionStateId"]>;
-  positionX?: Criterion<PreFrameUpdateType["positionX"]>;
-  positionY?: Criterion<PreFrameUpdateType["positionY"]>;
-  facingDirection?: Criterion<PreFrameUpdateType["facingDirection"]>;
-  joystickX?: Criterion<PreFrameUpdateType["joystickX"]>;
-  joystickY?: Criterion<PreFrameUpdateType["joystickY"]>;
-  cStickX?: Criterion<PreFrameUpdateType["cStickX"]>;
-  cStickY?: Criterion<PreFrameUpdateType["cStickY"]>;
-  trigger?: Criterion<PreFrameUpdateType["trigger"]>;
-  buttons?: Criterion<PreFrameUpdateType["buttons"]>;
-  physicalButtons?: Criterion<PreFrameUpdateType["physicalButtons"]>;
-  physicalLTrigger?: Criterion<PreFrameUpdateType["physicalLTrigger"]>;
-  physicalRTrigger?: Criterion<PreFrameUpdateType["physicalRTrigger"]>;
-  percent?: Criterion<PreFrameUpdateType["percent"]>;
-};
+export type PreFrameUpdateCriteriaType = Criteria<PreFrameUpdateType>;
 
-export type PostFrameUpdateCriteriaType = {
-  frame?: Criterion<PostFrameUpdateType["frame"]>;
-  playerIndex?: Criterion<PostFrameUpdateType["playerIndex"]>;
-  isFollower?: Criterion<PostFrameUpdateType["isFollower"]>;
-  internalCharacterId?: Criterion<PostFrameUpdateType["internalCharacterId"]>;
-  actionStateId?: Criterion<PostFrameUpdateType["actionStateId"]>;
-  positionX?: Criterion<PostFrameUpdateType["positionX"]>;
-  positionY?: Criterion<PostFrameUpdateType["positionY"]>;
-  facingDirection?: Criterion<PostFrameUpdateType["facingDirection"]>;
-  percent?: Criterion<PostFrameUpdateType["percent"]>;
-  shieldSize?: Criterion<PostFrameUpdateType["shieldSize"]>;
-  lastAttackLanded?: Criterion<PostFrameUpdateType["lastAttackLanded"]>;
-  currentComboCount?: Criterion<PostFrameUpdateType["currentComboCount"]>;
-  lastHitBy?: Criterion<PostFrameUpdateType["lastHitBy"]>;
-  stocksRemaining?: Criterion<PostFrameUpdateType["stocksRemaining"]>;
-  actionStateCounter?: Criterion<PostFrameUpdateType["actionStateCounter"]>;
-  lCancelStatus?: Criterion<PostFrameUpdateType["lCancelStatus"]>;
-};
+export type PostFrameUpdateCriteriaType = Criteria<PostFrameUpdateType>;
 
-export type GameCriteriaType = {
-  slpVersion?: Criterion<GameStartType["slpVersion"]>;
-  stageId?: Criterion<GameStartType["stageId"]>;
+export type GameCriteriaType = Omit<Criteria<GameStartType>, "players"> & {
   players?: PlayerCriteriaType[];
-  isTeams?: Criterion<GameStartType["isTeams"]>;
-  isPAL?: Criterion<GameStartType["isPAL"]>;
 };
 
-export type PlayerCriteriaType = {
-  playerIndex?: Criterion<PlayerType["playerIndex"]>;
-  port?: Criterion<PlayerType["port"]>;
-  characterId?: Criterion<PlayerType["characterId"]>;
-  characterColor?: Criterion<PlayerType["characterColor"]>;
-  startStocks?: Criterion<PlayerType["startStocks"]>;
-  finalStocks?: Criterion<PlayerType["startStocks"]>;
-  type?: Criterion<PlayerType["type"]>;
-  teamId?: Criterion<PlayerType["teamId"]>;
-  controllerFix?: Criterion<PlayerType["controllerFix"]>;
-  nametag?: Criterion<PlayerType["nametag"]>;
-};
+export type PlayerCriteriaType = Criteria<PlayerType>;
 
 // slp-parser-js
 export type PlayerType = GameStartType["players"][number];

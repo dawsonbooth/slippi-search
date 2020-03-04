@@ -14,6 +14,12 @@ import {
   CriteriaSet
 } from "./common";
 
+/**
+ * Find out if player matches the given criteria
+ *
+ * @param player [[PlayerType]] object that will be checked
+ * @param criteria Criteria with required player attributes
+ */
 export function isValidPlayer(
   player: PlayerType,
   criteria: PlayerCriteriaType
@@ -24,6 +30,12 @@ export function isValidPlayer(
   return true;
 }
 
+/**
+ * Find out if game matches the given criteria
+ *
+ * @param game [[SlippiGame]] object that will be checked
+ * @param criteria Criteria with required game attributes
+ */
 export function isValidGame(
   game: SlippiGame,
   criteria: GameCriteriaType
@@ -47,6 +59,12 @@ export function isValidGame(
   return true;
 }
 
+/**
+ * Find out if preframe update matches the given criteria
+ *
+ * @param pre [[PreFrameUpdateType]] object that will be checked
+ * @param criteria Criteria with required preframe attributes
+ */
 export function isValidPreFrameUpdate(
   pre: PreFrameUpdateType,
   criteria: PreFrameUpdateCriteriaType
@@ -57,6 +75,12 @@ export function isValidPreFrameUpdate(
   return true;
 }
 
+/**
+ * Find out if postframe update matches the given criteria
+ *
+ * @param post [[PostFrameUpdateType]] object that will be checked
+ * @param criteria Criteria with required postframe attributes
+ */
 export function isValidPostFrameUpdate(
   post: PostFrameUpdateType,
   criteria: PostFrameUpdateCriteriaType
@@ -67,6 +91,12 @@ export function isValidPostFrameUpdate(
   return true;
 }
 
+/**
+ * Find out if player frame matches the given criteria
+ *
+ * @param playerFrame Player frame object that will be checked
+ * @param criteria Criteria with required player frame attributes
+ */
 export function isValidPlayerFrame(
   playerFrame: {
     pre: PreFrameUpdateType;
@@ -80,6 +110,12 @@ export function isValidPlayerFrame(
   );
 }
 
+/**
+ * Find out if frame matches the given criteria
+ *
+ * @param frame [[FrameEntryType]] object that will be checked
+ * @param criteria Criteria with required frame attributes
+ */
 export function isValidFrame(
   frame: FrameEntryType,
   criteria: FrameCriteriaType
@@ -115,6 +151,14 @@ export function isValidFrame(
   return true;
 }
 
+/**
+ * Perform some function with an iterable of [[SlippiGame]]
+ * games that fit some given criteria
+ *
+ * @param games An iterable of [[SlippiGame]] games
+ * @param criteria Criteria with required game attributes
+ * @param callback Callback function to be called with each matching game
+ */
 export function withMatchingGames(
   games: Iterable<SlippiGame>,
   criteria: GameCriteriaType,
@@ -127,6 +171,14 @@ export function withMatchingGames(
   }
 }
 
+/**
+ * Perform some function with an iterable of [[FrameEntryType]]
+ * frames that fit some given criteria
+ *
+ * @param frames An iterable of [[FrameEntryType]] frames
+ * @param criteria Criteria with required frame attributes
+ * @param callback Callback function to be called with each matching frame
+ */
 export function withMatchingFrames(
   frames: Iterable<FrameEntryType>,
   criteria: FrameCriteriaType,
@@ -139,16 +191,28 @@ export function withMatchingFrames(
   }
 }
 
+/**
+ * Filter for all the matching games from a [[SlippiGame]] iterable
+ *
+ * @param games An iterable of [[SlippiGame]] games
+ * @param criteria Criteria with required game attributes
+ */
 export function getMatchingGames(
   games: Iterable<SlippiGame>,
   criteria: GameCriteriaType
-): Array<SlippiGame> {
-  return Array.from(games).filter(game => isValidGame(game, criteria));
+): SlippiGame[] {
+  return [...games].filter(game => isValidGame(game, criteria));
 }
 
+/**
+ * Filter for all the matching frames from a [[FrameEntryType]] iterable
+ *
+ * @param frames An iterable of [[FrameEntryType]] frames
+ * @param criteria Criteria with required frame attributes
+ */
 export function getMatchingFrames(
   frames: FrameEntryType[],
   criteria: FrameCriteriaType
-): Array<FrameEntryType> {
-  return Array.from(frames).filter(frame => isValidFrame(frame, criteria));
+): FrameEntryType[] {
+  return [...frames].filter(frame => isValidFrame(frame, criteria));
 }

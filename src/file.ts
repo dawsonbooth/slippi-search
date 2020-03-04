@@ -4,10 +4,18 @@ import SlippiGame from "slp-parser-js";
 
 const REPLAY_EXT = /\.slp$/;
 
+/**
+ * Walk through the filesystem from the start path and perform
+ * some function with any replay file ending with .slp.
+ *
+ * @param startPath Path to parent directory with .slp replay files and child replay directories
+ * @param callback Callback function to be called with each [[SlippiGame]] game
+ * @param recursive Whether the function will recursively walk through subdirectories
+ */
 export function withGamesFromDir(
   startPath: string,
   callback: (game: SlippiGame) => void,
-  recursive?: boolean
+  recursive: boolean = false
 ): void {
   const absStartPath = path.resolve(startPath);
   const files = fs.readdirSync(absStartPath);
@@ -22,10 +30,18 @@ export function withGamesFromDir(
   });
 }
 
+/**
+ * Walk through the filesystem from the start path and perform some
+ * function asynchronously with any replay file ending with .slp.
+ *
+ * @param startPath Path to parent directory with .slp replay files and child replay directories
+ * @param callback Callback function to be called asynchronously with each [[SlippiGame]] game
+ * @param recursive Whether the function will recursively walk through subdirectories
+ */
 export function withGamesFromDirAsync(
   startPath: string,
   callback: (game: SlippiGame) => void,
-  recursive?: boolean
+  recursive: boolean = false
 ): void {
   const absStartPath = path.resolve(startPath);
 
@@ -40,11 +56,17 @@ export function withGamesFromDirAsync(
   });
 }
 
+/**
+ * Gather all the replays at the start path into an array
+ *
+ * @param startPath Path to parent directory with .slp replay files and child replay directories
+ * @param recursive Whether the function will recursively walk through subdirectories
+ */
 export function getGamesFromDir(
   startPath: string,
-  recursive?: boolean
-): Array<SlippiGame> {
-  const found = new Array<SlippiGame>();
+  recursive: boolean = false
+): SlippiGame[] {
+  const found = [];
   withGamesFromDir(
     startPath,
     (game: SlippiGame) => found.push(game),

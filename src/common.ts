@@ -6,6 +6,11 @@ import SlippiGame, {
   PostFrameUpdateType
 } from "slp-parser-js";
 
+/**
+ * Sort frames from given [[SlippiGame]] game
+ *
+ * @param game [[SlippiGame]] game to get frames from
+ */
 export function sortedFrames(game: SlippiGame): FrameEntryType[] {
   const frames = game.getFrames();
   return _.orderBy(frames, "frame");
@@ -28,22 +33,28 @@ class Range<E> {
 export type Criterion<E> = (E | E[])[];
 
 export class CriteriaSet<E> {
-  ranges: Range<E>[] = new Array<Range<E>>();
-  values: Set<E> = new Set<E>();
+  ranges: Range<E>[];
+  values: Set<E>;
 
   constructor(args: Criterion<E>) {
     if (args === undefined) return;
 
+    const ranges = [];
+    const values = new Set<E>();
+
     for (const arg of args) {
       if (arg instanceof Array) {
         if (arg.length !== 2) {
-          throw new Error("Range item must have length of 2");
+          throw new TypeError("Range item must have length of 2");
         }
-        this.ranges.push(new Range(arg[0], arg[1]));
+        ranges.push(new Range(arg[0], arg[1]));
       } else {
-        this.values.add(arg);
+        values.add(arg);
       }
     }
+
+    this.ranges = ranges;
+    this.values = values;
   }
 
   has(arg: E): boolean {
@@ -126,4 +137,4 @@ export type PlayerCriteriaType = {
 };
 
 // slp-parser-js
-export type PlayerType = GameStartType["players"][0];
+export type PlayerType = GameStartType["players"][number];

@@ -33,7 +33,7 @@ export function isValidPlayer(
 /**
  * Find out if game matches the given criteria
  *
- * @param game [[SlippiGame]] object that will be checked
+ * @param game [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) object that will be checked
  * @param criteria Criteria with required game attributes
  */
 export function isValidGame(
@@ -113,7 +113,7 @@ export function isValidPlayerFrame(
 /**
  * Find out if frame matches the given criteria
  *
- * @param frame [[FrameEntryType]] object that will be checked
+ * @param frame [FrameEntryType](https://github.com/project-slippi/slp-parser-js/blob/master/src/stats/common.ts#L4-L15) object that will be checked
  * @param criteria Criteria with required frame attributes
  */
 export function isValidFrame(
@@ -152,10 +152,10 @@ export function isValidFrame(
 }
 
 /**
- * Perform some function with an iterable of [[SlippiGame]]
+ * Perform some function with an iterable of [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180)
  * games that fit some given criteria
  *
- * @param games An iterable of [[SlippiGame]] games
+ * @param games An iterable of [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) games
  * @param criteria Criteria with required game attributes
  * @param callback Callback function to be called with each matching game
  */
@@ -172,10 +172,10 @@ export function withMatchingGames(
 }
 
 /**
- * Perform some function with an iterable of [[FrameEntryType]]
+ * Perform some function with an iterable of [FrameEntryType](https://github.com/project-slippi/slp-parser-js/blob/master/src/stats/common.ts#L4-L15)
  * frames that fit some given criteria
  *
- * @param frames An iterable of [[FrameEntryType]] frames
+ * @param frames An iterable of [FrameEntryType](https://github.com/project-slippi/slp-parser-js/blob/master/src/stats/common.ts#L4-L15) frames
  * @param criteria Criteria with required frame attributes
  * @param callback Callback function to be called with each matching frame
  */
@@ -192,9 +192,9 @@ export function withMatchingFrames(
 }
 
 /**
- * Filter for all the matching games from a [[SlippiGame]] iterable
+ * Filter for all the matching games from a [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) iterable
  *
- * @param games An iterable of [[SlippiGame]] games
+ * @param games An iterable of [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) games
  * @param criteria Criteria with required game attributes
  */
 export function getMatchingGames(
@@ -205,9 +205,9 @@ export function getMatchingGames(
 }
 
 /**
- * Filter for all the matching frames from a [[FrameEntryType]] iterable
+ * Filter for all the matching frames from a [FrameEntryType](https://github.com/project-slippi/slp-parser-js/blob/master/src/stats/common.ts#L4-L15) iterable
  *
- * @param frames An iterable of [[FrameEntryType]] frames
+ * @param frames An iterable of [FrameEntryType](https://github.com/project-slippi/slp-parser-js/blob/master/src/stats/common.ts#L4-L15) frames
  * @param criteria Criteria with required frame attributes
  */
 export function getMatchingFrames(

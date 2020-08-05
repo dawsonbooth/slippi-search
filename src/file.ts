@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import SlippiGame from "slp-parser-js";
+import SlippiGame from "@slippi/slippi-js";
 
 const REPLAY_EXT = /\.slp$/;
 
@@ -9,7 +9,7 @@ const REPLAY_EXT = /\.slp$/;
  * some function with any replay file ending with .slp.
  *
  * @param startPath Path to parent directory with .slp replay files and child replay directories
- * @param callback Callback function to be called with each [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) game
+ * @param callback Callback function to be called with each [SlippiGame](https://github.com/project-slippi/@slippi/slippi-js/blob/master/src/SlippiGame.ts#L19-L180) game
  * @param recursive Whether the function will recursively walk through subdirectories
  */
 export function withGamesFromDir(
@@ -35,7 +35,7 @@ export function withGamesFromDir(
  * function asynchronously with any replay file ending with .slp.
  *
  * @param startPath Path to parent directory with .slp replay files and child replay directories
- * @param callback Callback function to be called asynchronously with each [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) game
+ * @param callback Callback function to be called asynchronously with each [SlippiGame](https://github.com/project-slippi/@slippi/slippi-js/blob/master/src/SlippiGame.ts#L19-L180) game
  * @param recursive Whether the function will recursively walk through subdirectories
  */
 export function withGamesFromDirAsync(

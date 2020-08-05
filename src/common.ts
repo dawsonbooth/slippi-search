@@ -4,12 +4,12 @@ import SlippiGame, {
   GameStartType,
   PreFrameUpdateType,
   PostFrameUpdateType
-} from "slp-parser-js";
+} from "@slippi/slippi-js";
 
 /**
- * Sort frames from given [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) game
+ * Sort frames from given [SlippiGame](https://github.com/project-slippi/@slippi/slippi-js/blob/master/src/SlippiGame.ts#L19-L180) game
  *
- * @param game [SlippiGame](https://github.com/project-slippi/slp-parser-js/blob/master/src/SlippiGame.ts#L19-L180) game to get frames from
+ * @param game [SlippiGame](https://github.com/project-slippi/@slippi/slippi-js/blob/master/src/SlippiGame.ts#L19-L180) game to get frames from
  */
 export function sortedFrames(game: SlippiGame): FrameEntryType[] {
   const frames = game.getFrames();
@@ -91,5 +91,5 @@ export type GameCriteriaType = Omit<Criteria<GameStartType>, "players"> & {
 
 export type PlayerCriteriaType = Criteria<PlayerType>;
 
-// slp-parser-js
+// @slippi/slippi-js
 export type PlayerType = GameStartType["players"][number];

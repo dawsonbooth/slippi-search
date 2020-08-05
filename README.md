@@ -17,7 +17,7 @@ With [Node.js](https://nodejs.org/en/download/) installed, simply run the follow
 npm install slippi-search
 ```
 
-This will also add Project Slippi's [slp-parser-js](https://github.com/project-slippi/slp-parser-js) as a dependency.
+This will also add Project Slippi's [@slippi/slippi-js](https://github.com/project-slippi/@slippi/slippi-js) as a dependency.
 
 # Usage
 
@@ -36,7 +36,7 @@ const {
     withMatchingFrames,
     sortedFrames
 } = require("slippi-search");
-const { stages } = require("slp-parser-js");
+const { stages } = require("@slippi/slippi-js");
 
 // Define game criteria
 const gameCriteria = {

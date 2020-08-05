@@ -5,8 +5,8 @@
 const fs = require('fs');
 const _ = require('lodash');
 const path = require('path');
-const slp = require('slp-parser-js');
-const SlippiGame = slp.default; // npm install slp-parser-js
+const slp = require('@slippi/slippi-js');
+const SlippiGame = slp.default; // npm install @slippi/slippi-js
 const { getGamesFromDir, isValidGame } = require("slippi-search");
 
 const basePath = 'slp' // this var is "<directory your script is in>/slp"
@@ -26,7 +26,7 @@ const dolphin = {
 const fdCGers = [9, 12, 13, 22]; // Marth, Peach, Pikachu, and Doc
 
 const filterByNames = []; // add names as strings to this array (checks both netplay name and nametags). `["Nikki", "Metonym", "metonym"]`
-const filterByCharacters = []; //add character names as strings. Use the regular or shortnames from here: https://github.com/project-slippi/slp-parser-js/blob/master/src/melee/characters.ts
+const filterByCharacters = []; //add character names as strings. Use the regular or shortnames from here: https://github.com/project-slippi/@slippi/slippi-js/blob/master/src/melee/characters.ts
 
 var minimumComboPercent = 60; // this decides the threshold for combos
 var originalMin = minimumComboPercent; // we use this to reset the threshold

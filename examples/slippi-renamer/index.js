@@ -4,8 +4,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const slp = require('slp-parser-js');
-const { default: SlippiGame } = require('slp-parser-js');
+const slp = require('@slippi/slippi-js');
+const { default: SlippiGame } = require('@slippi/slippi-js');
 const { withGamesFromDir } = require('slippi-search');
 
 /** Returns character with their tag or color in parentheses (if they have either). */

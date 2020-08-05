@@ -10,7 +10,7 @@ import {
   isValidPostFrameUpdate,
   isValidPlayerFrame
 } from "..";
-import { stages, FrameEntryType, characters } from "slp-parser-js";
+import { stages, FrameEntryType, characters } from "@slippi/slippi-js";
 import { sortedFrames, FrameCriteriaType, GameCriteriaType } from "../common";
 
 const REPLAY_DIR = "slp";

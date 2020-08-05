@@ -1,6 +1,6 @@
 {
   "name": "slippi-search",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "A collection of useful functions for searching through Slippi Replays",
   "license": "MIT",
   "repository": "dawsonbooth/slippi-search",
@@ -12,7 +12,8 @@
     "smash",
     "melee",
     "ssbm",
-    "slp-parser-js"
+    "slp-parser-js",
+    "@slippi/slippi-js"
   ],
   "author": {
     "name": "Dawson Booth",

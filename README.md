@@ -17,7 +17,7 @@ With [Node.js](https://nodejs.org/en/download/) installed, simply run the follow
 npm install slippi-search
 ```
 
-This will also add Project Slippi's [@slippi/slippi-js](https://github.com/project-slippi/@slippi/slippi-js) as a dependency.
+This will also add Project Slippi's [@slippi/slippi-js](https://github.com/project-slippi/slippi-js) as a dependency.
 
 # Usage
 
